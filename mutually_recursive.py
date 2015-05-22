@@ -17,4 +17,5 @@ def b(n):
 loop = asyncio.get_event_loop()
 asyncio.async(a(0))
 loop.run_forever()
+loop.close()
 

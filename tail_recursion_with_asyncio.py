@@ -14,4 +14,5 @@ def factorial(n, acc=1):
 loop = asyncio.get_event_loop()
 asyncio.async(factorial(1000))
 loop.run_forever() # Blocking call interrupted by loop.stop()
+loop.close()
 
