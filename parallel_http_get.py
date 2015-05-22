@@ -1,5 +1,5 @@
-""" Downloads a few web pages in parallel, and counts how many times a word is used in 
-all of them. """
+""" Downloads a few web pages in parallel, and counts how many times a specified
+word is used in each of them. """
 
 import asyncio
 import aiohttp
