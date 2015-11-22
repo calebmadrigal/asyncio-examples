@@ -1,3 +1,34 @@
+""" tcp_pubub_server.py
+
+This is a simple pub-sub server that works over TCP and has text-based messages.
+Note that this code is not robust. The 2 main problems are:
+
+* Messages may not contain commas
+* The receive code can break if the full message is not in the socket recv buffer
+  by the time readline() is called.
+
+But this serves for a very simple pub-sub asyncio demo which can be connected to by telnet:
+
+    (py)cmbpr:~ caleb$ telnet localhost 8888
+    Trying 127.0.0.1...
+    Connected to localhost.
+    Escape character is '^]'.
+    food,wine
+    wine,red
+    wine,red
+    goodbye
+    Connection closed by foreign host.
+
+What's happening in this example:
+
+* Client connects and subscribes to 'food' and 'wine' topics
+* Client sends a message ('red') under the topic ('wine')
+* Client receives the message because it subscribed to the 'wine' topic
+    - Any other clients connected which subscribed to 'wine' would also receive it
+* Client closes the connection by the command, 'goodbye'
+
+"""
+
 import asyncio
 
 
